@@ -4,10 +4,10 @@ using MyAPI.Models;
 
 namespace MyAPI.Models
 {
-    public class FirstAPIDBContext : DbContext
+    public class MyAPIDBContext : DbContext
     {
         protected readonly IConfiguration Configuration;
-        public FirstAPIDBContext(DbContextOptions<FirstAPIDBContext> options, IConfiguration configuration)
+        public MyAPIDBContext(DbContextOptions<MyAPIDBContext> options, IConfiguration configuration)
             : base(options)
         {
             Configuration = configuration;
