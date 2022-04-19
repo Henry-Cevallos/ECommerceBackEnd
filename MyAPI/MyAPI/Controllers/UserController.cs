@@ -7,13 +7,31 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyAPI.Models;
+using Newtonsoft.Json;
 
 namespace MyAPI.Controllers
 {
+    public class ApiResult<TValue>
+    {
+
+        [JsonProperty("status code")]
+        public int StatusCode { get; set; }
+
+        [JsonProperty("response")]
+        public TValue Response { get; set; }
+        public ApiResult(TValue value, int statusCode)
+        {
+            Response = value;
+            StatusCode = statusCode;
+        }
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
+        
+
         private readonly MyAPIDBContext _context;
 
         public UserController(MyAPIDBContext context)
@@ -38,7 +56,10 @@ namespace MyAPI.Controllers
             {
                 return NotFound();
             }
-
+ 
+            Console.WriteLine(Response.StatusCode);
+            var res = new ApiResult<User>(user, Response.StatusCode);
+            await Response.WriteAsJsonAsync(res);
             return user;
         }
 
