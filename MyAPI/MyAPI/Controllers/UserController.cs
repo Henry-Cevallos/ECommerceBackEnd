@@ -20,10 +20,10 @@ namespace MyAPI.Controllers
         public string StatusDescription { get; set; }
 
         [JsonProperty("response")]
-        public TValue Value { get; set; }
+        public TValue Response { get; set; }
         public ApiResult(TValue value, string description, int statusCode)
         {
-            Value = value;
+            Response = value;
             StatusDescription = description;
             StatusCode = statusCode;
         }
@@ -57,17 +57,19 @@ namespace MyAPI.Controllers
             var description = "Successful Response";
             if (user == null)
             {
-                //Response.StatusCode = 404;
+                Response.StatusCode = 404;
                 description = "Unsucessful Response. ID not found";
-                
-                return NotFound();
+                var result = new ApiResult<User>(user, description, 404);
+                await Response.WriteAsJsonAsync(result);
+
+                return new EmptyResult();
             }
  
             
             
             var res = new ApiResult<User>(user, description, 200);
             await Response.WriteAsJsonAsync(res);
-            //await Response.CompleteAsync();
+            
             return new EmptyResult();
         }
 
