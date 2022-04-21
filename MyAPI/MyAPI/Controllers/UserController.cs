@@ -14,14 +14,17 @@ namespace MyAPI.Controllers
     public class ApiResult<TValue>
     {
 
-        [JsonProperty("status code")]
+        [JsonProperty("statusCode")]
         public int StatusCode { get; set; }
+        [JsonProperty("statusDescription")]
+        public string StatusDescription { get; set; }
 
         [JsonProperty("response")]
-        public TValue Response { get; set; }
-        public ApiResult(TValue value, int statusCode)
+        public TValue Value { get; set; }
+        public ApiResult(TValue value, string description, int statusCode)
         {
-            Response = value;
+            Value = value;
+            StatusDescription = description;
             StatusCode = statusCode;
         }
     }
@@ -51,16 +54,21 @@ namespace MyAPI.Controllers
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
-
+            var description = "Successful Response";
             if (user == null)
             {
+                //Response.StatusCode = 404;
+                description = "Unsucessful Response. ID not found";
+                
                 return NotFound();
             }
  
-            Console.WriteLine(Response.StatusCode);
-            var res = new ApiResult<User>(user, Response.StatusCode);
+            
+            
+            var res = new ApiResult<User>(user, description, 200);
             await Response.WriteAsJsonAsync(res);
-            return user;
+            //await Response.CompleteAsync();
+            return new EmptyResult();
         }
 
         // PUT: api/User/5
