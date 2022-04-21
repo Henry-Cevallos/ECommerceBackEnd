@@ -46,7 +46,11 @@ namespace MyAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var result =  await _context.Users.ToListAsync();
+            var description = "Sucessful Response";
+            var response = new ApiResult<List<User>>(result, description, Response.StatusCode);
+            await Response.WriteAsJsonAsync(response);
+            return new EmptyResult();
         }
 
         // GET: api/User/5
