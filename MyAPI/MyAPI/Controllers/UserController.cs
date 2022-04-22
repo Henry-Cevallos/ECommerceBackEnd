@@ -47,7 +47,7 @@ namespace MyAPI.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             var result =  await _context.Users.ToListAsync();
-            var description = "Sucessful Response";
+            var description = "Sucessful Response.";
             var response = new ApiResult<List<User>>(result, description, Response.StatusCode);
             await Response.WriteAsJsonAsync(response);
             return new EmptyResult();
@@ -58,7 +58,7 @@ namespace MyAPI.Controllers
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
-            var description = "Successful Response";
+            var description = "Successful Response. User Found.";
             if (user == null)
             {
                 Response.StatusCode = 404;
@@ -113,23 +113,35 @@ namespace MyAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            user.balance = 0.0f;
-            user.CardId = 1;
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            try
+            {
+                user.balance = 0.0f;
+                user.CardId = 1;
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                Response.StatusCode = 201;
 
-            //return CreatedAtAction("GetUser", new { id = user.UserId }, user);
-            Console.WriteLine(Response.StatusCode);
-            var description = "Sucessful Response";
-            var response = new ApiResult<User>(user, description, Response.StatusCode);
-            await Response.WriteAsJsonAsync(response);
-            return new EmptyResult();
+                var description = "Sucessful Response. User created";
+                var response = new ApiResult<User>(user, description, Response.StatusCode);
+                await Response.WriteAsJsonAsync(response);
+                return new EmptyResult();
+
+            }
+            catch (Exception e)
+            {
+                Response.StatusCode = 400;
+                var fail = new ApiResult<User>(null, "Failed Response. Bad Request. " + e.InnerException.Message, Response.StatusCode);
+                await Response.WriteAsJsonAsync(fail);
+                return new EmptyResult();
+            }
+           
         }
 
         // DELETE: api/User/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
+            
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
