@@ -113,10 +113,17 @@ namespace MyAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            user.balance = 0.0f;
+            user.CardId = 1;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            //return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            Console.WriteLine(Response.StatusCode);
+            var description = "Sucessful Response";
+            var response = new ApiResult<User>(user, description, Response.StatusCode);
+            await Response.WriteAsJsonAsync(response);
+            return new EmptyResult();
         }
 
         // DELETE: api/User/5
