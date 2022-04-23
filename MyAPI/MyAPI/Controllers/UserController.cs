@@ -148,7 +148,16 @@ namespace MyAPI.Controllers
                 return NotFound();
             }
 
+            var card = await _context.Cards.FindAsync(user.CardId);
+            if(card != null)
+            {
+                _context.Cards.Remove(card);
+            }
+
+
             _context.Users.Remove(user);
+
+            
             await _context.SaveChangesAsync();
 
             return NoContent();
