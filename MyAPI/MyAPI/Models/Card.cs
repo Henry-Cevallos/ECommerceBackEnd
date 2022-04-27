@@ -2,9 +2,10 @@
 {
     public class Card
     {
-        public int? CardId { get; set; }
+        public int CardId { get; set; }
         public string cvv { get; set; }
         public string expiration { get; set; }
         public string numbers { get; set; }
+        public int? UserId { get; set; }
     }
 }
