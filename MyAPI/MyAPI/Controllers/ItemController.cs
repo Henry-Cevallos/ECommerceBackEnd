@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyAPI.Models;
+using Newtonsoft.Json;
 
 namespace MyAPI.Controllers
 {
@@ -91,13 +92,19 @@ namespace MyAPI.Controllers
             var item = await _context.Items.FindAsync(id);
             if (item == null)
             {
-                return NotFound();
+                Response.StatusCode = 404;
+                var failResult = new ApiResult<Item>(null, "Unsuccessful Response. Invalid ID passed", 404);
+                await Response.WriteAsJsonAsync(failResult);
+                return new EmptyResult();
             }
 
             _context.Items.Remove(item);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            Response.StatusCode = 200;
+            var successfulResult = new ApiResult<Item>(item, "Sucessful Response. Item Deleted", 200);
+            await Response.WriteAsJsonAsync(successfulResult);
+            return new EmptyResult();
         }
 
         private bool ItemExists(int id)
