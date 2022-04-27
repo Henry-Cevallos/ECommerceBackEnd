@@ -2,20 +2,20 @@
 
 ## Table of Contents
 1. [Introduction](#introduction)
-2. [Getting Started](#gs-id)
-3. [How to use](#htu-id)
-    - [Get all users](#get-u-id)
-    - [Get user by ID](#get-u-id-id)
-    - [Post new user](#post-u-id)
-    - [Get all items](#get-i-id)
-    - [Get item by ID](#get-i-id-id)
-    - [Post new item](#post-i-id)
-    - [Delete item](#delete-i-id)
+2. [Getting Started](#getting-started)
+3. [How to use](#how-to-use)
+    - [Get all users](#get-all-users)
+    - [Get user by ID](#get-user-bv-id)
+    - [Post new user](#post-new-user)
+    - [Get all items](#get-all-items)
+    - [Get item by ID](#get-item-by-id)
+    - [Post new item](#post-new-item)
+    - [Delete item](#delete-item)
 
 ## Introduction
 This API was created as my final project for my into to API's class. This API project is a barebones representation of what the backend for an E-Commerce site should look like. This project is done completely in C# using the ASP.NET Core Framework. I was inspired to make this type of backend because E-Commerce sites are very popular and I figured it would be good practice to build something similar.
 
-## Getting Started{#gs-id}
+## Getting Started
 First start up your local MySql Server and run the SQL script provided. This will automatically create the database and populate it with some data.
 
 Run the MyAPI solution to get the API running.
@@ -30,7 +30,7 @@ Be sure to have all of the following NuGet packages installed:
     - `Pomelo.EntityFrameworkCore.MySql`
     - `Swashbuckle.AspNetCore`
     
-## How to use {#htu-id}
+## How to use
 **Routes:**
  - [Get all users](#get-u-id)
 - [Get user by ID](#get-u-id-id)
@@ -58,7 +58,7 @@ You can expect all responses to come out in the following format:
 
 `response`: Will return a list or object based on whatever route was called.
 
-### GET All users {#get-u-id}
+### GET All users
 
 >      url:  https://localhost:7266/api/user/
 
@@ -89,7 +89,7 @@ This route will return information on all Users within the database.
 }
 ```
 
-### GET User by ID {#get-u-id-id}
+### GET User by ID
 
 >      url:  https://localhost:7266/api/user/{id}
 
@@ -111,7 +111,7 @@ This route will return information on a specific user based on the ID passed.
 }
 ```
 
-### POST New User {#post-u-id}
+### POST New User
 
 >      url:  https://localhost:7266/api/user/
 
@@ -141,7 +141,7 @@ This route will create a new user and add it to the databse.
     }
 }
 ```
-### GET All Items {#get-i-id}
+### GET All Items
 
 >      url:  https://localhost:7266/api/items/
 
@@ -172,7 +172,7 @@ This route will return information on all Items within the database.
 }
 ```
 
-### GET Item by ID {#get-i-id-id}
+### GET Item by ID
 
 >      url:  https://localhost:7266/api/item/{id}
 
@@ -194,7 +194,7 @@ This route will return information on a specific item within the database based 
 }
 ```
 
-### POST New Item {#post-i-id}
+### POST New Item
 
 >      url:  https://localhost:7266/api/item/
 
@@ -225,7 +225,7 @@ This route will create a new item based on the request body and add it to the da
 }
 ```
 
-### DELETE Item {#delete-i-id}
+### DELETE Item
 
 >      url:  https://localhost:7266/api/item/{id}
 
