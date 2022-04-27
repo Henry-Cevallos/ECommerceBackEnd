@@ -27,7 +27,8 @@ namespace MyAPI.Controllers
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
             var result = await _context.Items.ToListAsync();
-            var response = new ApiResult<List<Item>>(result, "Sucessful Response.", Response.StatusCode);
+            Response.StatusCode = 200;
+            var response = new ApiResult<List<Item>>(result, "Sucessful Response.", 200);
             await Response.WriteAsJsonAsync(response);
 
             return new EmptyResult();
