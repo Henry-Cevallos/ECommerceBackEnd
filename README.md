@@ -1,21 +1,21 @@
 # E-Commerce Back End API
 
 ## Table of Contents
-1. [Introduction] (#into-id)
-2. [Getting Started] (#gs-id)
-3. [How to use] (#htu-id)
-    - [Get all users] (#get-u-id)
-    - [Get user by ID] (#get-u-id-id)
-    - [Post new user] (#post-u-id)
-    - [Get all items] (#get-i-id)
-    - [Get item by ID] (#get-i-id-id)
-    - [Post new item] (#post-i-id)
-    - [Delete item] (#delete-i-id)
+1. [Introduction](#introduction)
+2. [Getting Started](#gs-id)
+3. [How to use](#htu-id)
+    - [Get all users](#get-u-id)
+    - [Get user by ID](#get-u-id-id)
+    - [Post new user](#post-u-id)
+    - [Get all items](#get-i-id)
+    - [Get item by ID](#get-i-id-id)
+    - [Post new item](#post-i-id)
+    - [Delete item](#delete-i-id)
 
-## Introduction {#intro-id}
+## Introduction
 This API was created as my final project for my into to API's class. This API project is a barebones representation of what the backend for an E-Commerce site should look like. This project is done completely in C# using the ASP.NET Core Framework. I was inspired to make this type of backend because E-Commerce sites are very popular and I figured it would be good practice to build something similar.
 
-## Getting Started {#gs-id}
+## Getting Started{#gs-id}
 First start up your local MySql Server and run the SQL script provided. This will automatically create the database and populate it with some data.
 
 Run the MyAPI solution to get the API running.
@@ -32,13 +32,13 @@ Be sure to have all of the following NuGet packages installed:
     
 ## How to use {#htu-id}
 **Routes:**
-- [Get all users] (#get-u-id)
-- [Get user by ID] (#get-u-id-id)
-- [Post new user] (#post-u-id)
-- [Get all items] (#get-i-id)
-- [Get item by ID] (#get-i-id-id)
-- [Post new item] (#post-i-id)
-- [Delete item] (#delete-i-id)
+ - [Get all users](#get-u-id)
+- [Get user by ID](#get-u-id-id)
+- [Post new user](#post-u-id)
+- [Get all items](#get-i-id)
+- [Get item by ID](#get-i-id-id)
+- [Post new item](#post-i-id)
+- [Delete item](#delete-i-id)
 
 Below will be documentation on every API route possible. You may also reference the Postman collection provided in the Repo to eliminate the need of typing out all the routes yourself.
 
