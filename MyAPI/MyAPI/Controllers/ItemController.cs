@@ -92,10 +92,26 @@ namespace MyAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
         {
-            _context.Items.Add(item);
-            await _context.SaveChangesAsync();
+            try
+            {
+                
+                _context.Items.Add(item);
+                await _context.SaveChangesAsync();
+                Response.StatusCode = 201;
 
-            return CreatedAtAction("GetItem", new { id = item.ItemId }, item);
+                var description = "Sucessful Response. Item created";
+                var response = new ApiResult<Item>(item, description, Response.StatusCode);
+                await Response.WriteAsJsonAsync(response);
+                return new EmptyResult();
+
+            }
+            catch (Exception e)
+            {
+                Response.StatusCode = 400;
+                var fail = new ApiResult<Item>(null, "Failed Response. Bad Request. " + e.InnerException.Message, Response.StatusCode);
+                await Response.WriteAsJsonAsync(fail);
+                return new EmptyResult();
+            }
         }
 
         // DELETE: api/Item/5
