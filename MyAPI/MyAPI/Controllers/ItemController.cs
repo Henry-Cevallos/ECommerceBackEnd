@@ -43,10 +43,17 @@ namespace MyAPI.Controllers
 
             if (item == null)
             {
-                return NotFound();
+                Response.StatusCode = 404;
+                var result = new ApiResult<Item>(item, "Unsucessful Response. ID not found", 404);
+                await Response.WriteAsJsonAsync(result);
+
+                return new EmptyResult();
             }
 
-            return item;
+            var res = new ApiResult<Item>(item, "Successful Response. User found.", 200);
+            await Response.WriteAsJsonAsync(res);
+
+            return new EmptyResult();
         }
 
         // PUT: api/Item/5
