@@ -7,6 +7,5 @@
         public string pass { get; set; }
         public string email { get; set; }
         public float balance { get; set; }
-        public int CardId { get; set; }
     }
 }

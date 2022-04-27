@@ -153,11 +153,11 @@ namespace MyAPI.Controllers
             {
                 _context.Cards.Remove(card);
             }
-
-
-            _context.Users.Remove(user);
-
             
+
+            var item = await _context.Items.FirstOrDefaultAsync(i => i.UserId == user.UserId);
+            _context.Items.Remove(item);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
             return NoContent();
