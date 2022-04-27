@@ -26,7 +26,12 @@ namespace MyAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
-            return await _context.Items.ToListAsync();
+            var result = await _context.Items.ToListAsync();
+            var response = new ApiResult<List<Item>>(result, "Sucessful Response.", Response.StatusCode);
+            await Response.WriteAsJsonAsync(response);
+
+            return new EmptyResult();
+            
         }
 
         // GET: api/Item/5
