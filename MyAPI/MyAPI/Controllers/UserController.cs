@@ -116,7 +116,6 @@ namespace MyAPI.Controllers
             try
             {
                 user.balance = 0.0f;
-                user.CardId = 1;
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
                 Response.StatusCode = 201;
@@ -148,15 +147,6 @@ namespace MyAPI.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards.FindAsync(user.CardId);
-            if(card != null)
-            {
-                _context.Cards.Remove(card);
-            }
-            
-
-            var item = await _context.Items.FirstOrDefaultAsync(i => i.UserId == user.UserId);
-            _context.Items.Remove(item);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
