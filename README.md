@@ -35,7 +35,7 @@ Be sure to have all of the following NuGet packages installed:
     - Pomelo.EntityFrameworkCore.MySql
     - Swashbuckle.AspNetCore
 
-Be sure to add this connection string to your `appsettings.json` as follows
+Be sure to add this connection string to your `appsettings.json` as follows. Remember to substitute for your username and password.
 ```json
 "ConnectionStrings": {
 "CustomerDataService": "Server=127.0.0.1;Port=3306;Database=ecommerce;User=USER;Password=PASSWORD"
