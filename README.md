@@ -11,17 +11,22 @@
     - [Get item by ID](#get-item-by-id)
     - [Post new item](#post-new-item)
     - [Delete item](#delete-item)
+4. [Final Thoughts](#final-thoughts)
 
 ## Introduction
-This API was created as my final project for my into to API's class. This API project is a barebones representation of what the backend for an E-Commerce site should look like. This project is done completely in C# using the ASP.NET Core Framework. I was inspired to make this type of backend because E-Commerce sites are very popular and I figured it would be good practice to build something similar.
+This API was created as my final project for my into to API's class. This API project is a barebones representation of what the backend for an E-Commerce site should look like. This project is done completely in C# using the ASP.NET Core Framework and Entity Framework. I was inspired to make this type of backend because E-Commerce sites are very popular and I figured it would be good practice to build something similar.
 
 ## Getting Started
-First start up your local MySql Server and run the SQL script provided. This will automatically create the database and populate it with some data.
 
-Run the MyAPI solution to get the API running.
+This Getting Started Section assumes you have `MySQL`, `MySQLServer`, `Visual Studio` with .NET installed and running.
+
+First start up your local MySql Server and run the SQL script provided in the repo. This will automatically create the database and populate it with some data.
+
+Run the MyAPI solution in visual studio to get the API running.
 
 Tips For Running:
 Be sure to have all of the following NuGet packages installed:
+
     - `Newtonsoft.Json`
     - `Microsoft.EntityFrameworkCore`
     - `Microsoft.EntityFrameworkCore.InMemory`
@@ -29,7 +34,13 @@ Be sure to have all of the following NuGet packages installed:
     - `Microsoft.EntityFrameworkCore.Tools`
     - `Pomelo.EntityFrameworkCore.MySql`
     - `Swashbuckle.AspNetCore`
-    
+
+Be sure to add this connection string to your `appsettings.json` as follows
+```json
+"ConnectionStrings": {
+"CustomerDataService": "Server=127.0.0.1;Port=3306;Database=ecommerce;User=USER;Password=PASSWORD"
+ }
+```
 ## How to use
 **Routes:**
  - [Get all users](#get-u-id)
@@ -246,4 +257,9 @@ This route will delete all the information on a specific item from the database.
     }
 }
 ```
+
+## Final Thoughts
+
+This project was fun to work on. It was a stressful time learning the intricacies of Entity Framework. Most of my struggle came from constructing the models in a way such that I would be able to cleanly delete with now primary/foreign key exceptions. After looking at documentation and getting help from my course instructor I was able to get the API functioning as intended.
+Any resonable person may be looking at my API with a questioning face wondering why the client is able to extract sensitive information such as passwords and credit card details with ease. I undertand and acknowledge these falws within the API and plan to add some type of encryption soon. For now this project just illustrates some of my knowledge wtih backends, specifically SQL and the .NET and Entity Framework.
 
