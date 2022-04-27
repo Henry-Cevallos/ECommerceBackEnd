@@ -27,13 +27,13 @@ Run the MyAPI solution in visual studio to get the API running.
 Tips For Running:
 Be sure to have all of the following NuGet packages installed:
 
-    - `Newtonsoft.Json`
-    - `Microsoft.EntityFrameworkCore`
-    - `Microsoft.EntityFrameworkCore.InMemory`
-    - `Microsoft.EntityFrameworkCore.SqlServer`
-    - `Microsoft.EntityFrameworkCore.Tools`
-    - `Pomelo.EntityFrameworkCore.MySql`
-    - `Swashbuckle.AspNetCore`
+    - Newtonsoft.Json
+    - Microsoft.EntityFrameworkCore
+    - Microsoft.EntityFrameworkCore.InMemory
+    - Microsoft.EntityFrameworkCore.SqlServer
+    - Microsoft.EntityFrameworkCore.Tools
+    - Pomelo.EntityFrameworkCore.MySql
+    - Swashbuckle.AspNetCore
 
 Be sure to add this connection string to your `appsettings.json` as follows
 ```json
