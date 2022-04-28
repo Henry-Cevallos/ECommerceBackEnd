@@ -51,7 +51,8 @@ Be sure to add this connection string to your `appsettings.json` as follows. Rem
 - [Post new item](#post-i-id)
 - [Delete item](#delete-i-id)
 
-Below will be documentation on every API route possible. You may also reference the Postman collection provided in the Repo to eliminate the need of typing out all the routes yourself.
+Below will be documentation on every API route possible. You may also reference the Postman collection provided [here](https://www.getpostman.com/collections/e964784505cb326d3ce6) to eliminate the need of typing out all the routes yourself.
+Just copy the the link then in Postman select Import -> Link -> Paste Link Provided -> Done. This will give you access to easy postman testing.
 
 You can expect all responses to come out in the following format:
 ```json
