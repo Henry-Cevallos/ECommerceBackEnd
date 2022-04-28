@@ -43,13 +43,13 @@ Be sure to add this connection string to your `appsettings.json` as follows. Rem
 ```
 ## How to use
 **Routes:**
- - [Get all users](#get-u-id)
-- [Get user by ID](#get-u-id-id)
-- [Post new user](#post-u-id)
-- [Get all items](#get-i-id)
-- [Get item by ID](#get-i-id-id)
-- [Post new item](#post-i-id)
-- [Delete item](#delete-i-id)
+- [Get all users](#get-all-users)
+- [Get user by ID](#get-user-bv-id)
+- [Post new user](#post-new-user)
+- [Get all items](#get-all-items)
+- [Get item by ID](#get-item-by-id)
+- [Post new item](#post-new-item)
+- [Delete item](#delete-item)
 
 Below will be documentation on every API route possible. You may also reference the Postman collection provided [here](https://www.getpostman.com/collections/e964784505cb326d3ce6) to eliminate the need of typing out all the routes yourself.
 Just copy the the link then in Postman select Import -> Link -> Paste Link Provided -> Done. This will give you access to easy postman testing.
@@ -262,5 +262,5 @@ This route will delete all the information on a specific item from the database.
 ## Final Thoughts
 
 This project was fun to work on. It was a stressful time learning the intricacies of Entity Framework. Most of my struggle came from constructing the models in a way such that I would be able to cleanly delete with now primary/foreign key exceptions. After looking at documentation and getting help from my course instructor I was able to get the API functioning as intended.
-Any resonable person may be looking at my API with a questioning face wondering why the client is able to extract sensitive information such as passwords and credit card details with ease. I undertand and acknowledge these falws within the API and plan to add some type of encryption soon. For now this project just illustrates some of my knowledge wtih backends, specifically SQL and the .NET and Entity Framework.
+Any resonable person may be looking at my API with a questioning face wondering why the client is able to extract sensitive information such as passwords and credit card details with ease. I understand and acknowledge these flaws within the API and plan to add some type of encryption soon. For now this project just illustrates some of my knowledge wtih backends, specifically SQL and the .NET and Entity Framework.
 
